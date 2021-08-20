@@ -4,7 +4,7 @@ import 'ad_event_action.dart';
 
 /// 广告事件
 class AdEvent {
-  AdEvent({this.adId, this.action});
+  AdEvent({required this.adId, required this.action});
   // 广告 id
   final String adId;
   // 操作

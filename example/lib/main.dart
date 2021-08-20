@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     init().then((value) {
       if (value) {
-        showSplashAd(AdsConfig.logo);
+        showSplashAd(logo: AdsConfig.logo);
       }
     });
     setAdEvent();
@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
                 child: Text('展示开屏广告（Logo）'),
                 onPressed: () {
                   // showSplashAd('ic_logo2');
-                  showSplashAd(AdsConfig.logo);
+                  showSplashAd(logo: AdsConfig.logo);
                   setState(() {});
                 },
               ),
@@ -123,9 +123,10 @@ Future<bool> init() async {
 
 /// 展示开屏广告
 /// [logo] 展示如果传递则展示logo，不传递不展示
-Future<void> showSplashAd([String logo]) async {
+Future<void> showSplashAd({String logo}) async {
   try {
-    bool result = await FlutterQqAds.showSplashAd(AdsConfig.splashId, logo);
+    bool result =
+        await FlutterQqAds.showSplashAd(AdsConfig.splashId, logo: logo);
     _result = "展示开屏广告${result ? '成功' : '失败'}";
   } on PlatformException catch (e) {
     _result = "展示开屏广告失败 code:${e.code} msg:${e.message} details:${e.details}";
